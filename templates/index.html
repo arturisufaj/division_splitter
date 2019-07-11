@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1 class="mb-3" align="center">List Divisions</h1>
+    <div id="form_area" align="center">
+    <form action="javascript:getList();">
+        <input type="number" min="1" style="width: 300px;text-align:center;" align="center" id="list_num" autofocus autocomplete="off" required placeholder="Number of Divisions to Display">
+        <button class="btn btn-primary" id="list_btn" type="submit">Get List</button>
+    </form>
+    </div>
+
+    <div id="results"></div>
+    <br>
+    <div id="to_show" hidden>
+    <form id="next_form" action="/show" method="get" align="center">
+        <input type="number" align="center" align="center" min="1" style="width: 300px;text-align:center;" id="chosen_num" name="chosen_num" autofocus autocomplete="off" required placeholder="Choose From the List Above">
+        <input type="number" id="from_list" name="from_list" hidden>
+        <button class="btn btn-primary" type="submit">Split it</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </div>
+
+
+    <script>
+
+            function getList() {
+                $.get('/get?list_num=' + document.getElementById("list_num").value, function(data) {
+                    document.getElementById("results").innerHTML = data;});
+                document.getElementById("to_show").removeAttribute("hidden");
+                document.getElementById("from_list").value = document.getElementById("list_num").value
+                document.getElementById("chosen_num").max = document.getElementById("list_num").value
+            }
+    </script>
+
+{% endblock %}

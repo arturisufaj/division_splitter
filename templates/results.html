@@ -1,0 +1,8 @@
+{% for i in range(0,billData["result"]["items"]|length) %}
+	{% set date_str = billData["result"]["items"][i]["date"]['_value'] %}
+	{% set year,month,day = date_str.split("-") %}
+
+    <h6 align="center" id="division_{{i+1}}"><strong style="color:blue">Num: {{i+1}} ~ {{day}}/{{month}}/{{year}}</strong><br> {{billData["result"]["items"][i]["title"] }}
+    </h6>
+    
+{% endfor %}

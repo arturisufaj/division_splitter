@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block main%}
+<h6 align="center">
+    <strong style="color:blue">Title: {{chosen_bill_data["result"]["primaryTopic"]["title"]}}</strong><br>
+</h6>
+<div align="center">
+    Ayes: {{chosen_bill_data["result"]["primaryTopic"]["AyesCount"][0]['_value']}}<br>
+    Noes: {{chosen_bill_data["result"]["primaryTopic"]["Noesvotecount"][0]['_value']}}<br>
+
+    {% if chosen_bill_data["result"]["primaryTopic"]["AyesCount"][0]['_value']>chosen_bill_data["result"]["primaryTopic"]["Noesvotecount"][0]['_value'] %}
+    The <strong style="color:green">AYES</strong> have it!
+    {% endif %}
+
+    {% if chosen_bill_data["result"]["primaryTopic"]["AyesCount"][0]['_value']<chosen_bill_data["result"]["primaryTopic"]["Noesvotecount"][0]['_value'] %}
+    The <strong style="color:red">NOES</strong> have it!
+    {% endif %}
+
+</div>
+{% endblock %}

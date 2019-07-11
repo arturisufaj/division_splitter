@@ -1,0 +1,23 @@
+    <div class="responsive-table">
+        <h1 class="mb-3" align="center"></h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Movie</th>
+                    <th>Gender</th>
+                    <th>Is...</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for datum in data %}
+                <tr>
+                    <td>{{ datum["name"] }}</td>
+                    <td>{{ datum["movie"] }}</td>
+                    <td>{{ datum["gender"] }}</td>
+                    <td>{{ datum["role"] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>

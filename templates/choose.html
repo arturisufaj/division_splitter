@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block main%}
+{% set total_Ayes = choose["chosen_bill_data"]["result"]["primaryTopic"]["AyesCount"][0]['_value'] %}
+{% set total_Noes = choose["chosen_bill_data"]["result"]["primaryTopic"]["Noesvotecount"][0]['_value'] %}
+
+    <div class="responsive-table">
+        <h1 class="mb-3" align="center">{{choose["chosen_bill_data"]["result"]["primaryTopic"]["title"]}}
+        </h1>
+        <h6 class="mb-3" align="center">
+        {{choose["_date"]}}
+        </h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><a style="color:green">Ayes</a></th>
+                    <th><a style="color:red">Noes</a></th>
+                    <th>Winner</th>
+                    <th>Margin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+
+                        <strong>Total: {{choose["chosen_bill_data"]["result"]["primaryTopic"]["AyesCount"][0]['_value']}}</strong><br>
+                        {% if choose["totes"]["totAyes"]["labAye"]!=0 %}
+                        <a style="color:red">Labour:</a> {{choose["totes"]["totAyes"]["labAye"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totAyes"]["conAye"]!=0 %}
+                        <a style="color:blue">Conservative:</a> 
+                        {{choose["totes"]["totAyes"]["conAye"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totAyes"]["snpAye"]!=0 %}
+                        <a style="color:gold">SNP:</a> {{choose["totes"]["totAyes"]["snpAye"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totAyes"]["libAye"]!=0 %}
+                        <a style="color:orange">Lib Dem:</a> {{choose["totes"]["totAyes"]["libAye"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totAyes"]["pcmAye"]!=0 %}
+                        <a style="color:cadetblue">Plaid:</a> {{choose["totes"]["totAyes"]["pcmAye"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totAyes"]["dupAye"]!=0 %}
+                        <a style="color:chocolate">DUP:</a> {{choose["totes"]["totAyes"]["dupAye"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totAyes"]["grnAye"]!=0 %}
+                        <a style="color:green">Green:</a> {{choose["totes"]["totAyes"]["grnAye"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totAyes"]["indAye"]!=0 %}
+                        <a style="color:gray">Independent:</a> {{choose["totes"]["totAyes"]["indAye"]}}<br>
+                        {% endif %}
+
+                    </td>
+                    <td>
+
+                        <strong>Total: {{choose["chosen_bill_data"]["result"]["primaryTopic"]["Noesvotecount"][0]['_value']}}</strong><br>
+                        {% if choose["totes"]["totNoes"]["labNo"]!=0 %}
+                        <a style="color:red">Labour:</a> {{choose["totes"]["totNoes"]["labNo"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totNoes"]["conNo"]!=0 %}
+                        <a style="color:blue">Conservative:</a> {{choose["totes"]["totNoes"]["conNo"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totNoes"]["snpNo"]!=0 %}
+                        <a style="color:gold">SNP:</a> {{choose["totes"]["totNoes"]["snpNo"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totNoes"]["libNo"]!=0 %}
+                        <a style="color:orange">Lib Dem:</a> {{choose["totes"]["totNoes"]["libNo"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totNoes"]["pcmNo"]!=0 %}
+                        <a style="color:cadetblue">Plaid:</a> {{choose["totes"]["totNoes"]["pcmNo"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totNoes"]["dupNo"]!=0 %}
+                        <a style="color:chocolate">DUP:</a> {{choose["totes"]["totNoes"]["dupNo"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totNoes"]["grnNo"]!=0 %}
+                        <a style="color:green">Green:</a> {{choose["totes"]["totNoes"]["grnNo"]}}<br>
+                        {% endif %}
+                        {% if choose["totes"]["totNoes"]["indNo"]!=0 %}
+                        <a style="color:gray">Independent:</a> {{choose["totes"]["totNoes"]["indNo"]}}<br>
+                        {% endif %}
+
+                    </td>
+                    <td>  
+
+                        {% if  total_Ayes>total_Noes %}
+                        The <strong style="color:green">AYES</strong> have it!
+                        {% endif %}
+
+                        {% if total_Ayes<total_Noes %}
+                        The <strong style="color:red">NOES</strong> have it!
+                        {% endif %}
+
+                    </td>
+                    <td>
+                        {% if  total_Ayes>total_Noes %}
+                        <strong style="color:green">{{choose["chosen_bill_data"]["result"]["primaryTopic"]["Margin"][0]['_value']}}</strong>
+                        {% endif %}
+
+                        {% if  total_Ayes<total_Noes %}
+                        <strong style="color:red">{{choose["chosen_bill_data"]["result"]["primaryTopic"]["Margin"][0]['_value']}}</strong>
+                        {% endif %}
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
