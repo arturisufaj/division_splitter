@@ -2,7 +2,7 @@
 	{% set date_str = billData["result"]["items"][i]["date"]['_value'] %}
 	{% set year,month,day = date_str.split("-") %}
 
-    <h6 align="center" id="division_{{i+1}}"><strong style="color:blue">Num: {{i+1}} ~ {{day}}/{{month}}/{{year}}</strong><br> {{billData["result"]["items"][i]["title"] }}
-    </h6>
+    <h6 align="center" id="division_{{i+1}}"><strong style="color:black">Num: {{i+1}} ~ {{day}}/{{month}}/{{year}}</strong><a href="/show?chosen_num={{i+1}}&from_list={{i+1}}"><br> {{billData["result"]["items"][i]["title"] }}</a>
+    </h6><br>
     
 {% endfor %}
