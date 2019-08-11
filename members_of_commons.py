@@ -24,7 +24,7 @@ for element in partyList:
                 conCount+=1
         if element.getAttribute('Id') == "7": # id = 7 is DUP
                 dupCount+=1
-        if element.getAttribute('Id') == "8": # id = 7 is Independent
+        if element.getAttribute('Id') == "8": # id = 8 is Independent
                 indCount+=1
         if element.getAttribute('Id') == "15": # id = 15 is Labour
                 labCount+=1
